@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1000dp" />
+            <include
+                android:id="@+id/recommandMenuList"
+                layout="@layout/layout_horizontal_menu_list" />
+
+            <include
+                android:id="@+id/bannerLayout"
+                layout="@layout/layout_banner_image" />
+
+            <include
+                android:id="@+id/foodMenuList"
+                layout="@layout/layout_horizontal_menu_list" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="@color/white"
@@ -59,7 +72,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:alpha="0.5"
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
@@ -67,8 +79,10 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="50dp"
+                    android:alpha="0.5"
                     android:max="12"
                     android:progress="5"
+                    android:progressDrawable="@drawable/drawable_progress"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/starCountTextView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -104,32 +118,43 @@
 
                     <TextView
                         android:id="@+id/newsTextView"
-                        android:text="What News"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:drawableStart="@drawable/baseline_newspaper_24"
                         android:drawablePadding="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:text="What News"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/couponTextView"
-                        android:text="Coupon"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:drawableStart="@drawable/baseline_discount_24"
                         android:drawablePadding="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:text="Coupon"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:backgroundTint="#307633"
+        android:text="@string/delivery"
+        android:textColor="@color/white"
+        app:icon="@drawable/baseline_delivery_dining_24"
+        app:iconTint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
